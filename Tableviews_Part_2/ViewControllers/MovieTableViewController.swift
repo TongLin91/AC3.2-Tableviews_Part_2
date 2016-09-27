@@ -16,7 +16,9 @@ class MovieTableViewController: UITableViewController {
     }
   
     internal var movieData: [Movie]?
-
+    static let reelGoodGreen: UIColor = UIColor(red: 109.0/255.0, green: 199.0/255.0, blue: 39.0/255.0, alpha: 1.0)
+    static let reelGoodGray: UIColor = UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1.0)
+    
     internal let rawMovieData: [[String : Any]] = movies
     let cellIdentifier: String = "MovieTableViewCell"
     
@@ -25,7 +27,8 @@ class MovieTableViewController: UITableViewController {
 
         self.title = "Movies"
         // 1. need to update our table for self-sizing cells
-        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200.0
         // converting from array of dictionaries
         // to an array of Movie structs
         var movieContainer: [Movie] = []
@@ -33,13 +36,21 @@ class MovieTableViewController: UITableViewController {
             movieContainer.append(Movie(from: rawMovie))
         }
         movieData = movieContainer
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // 1. update our nav controller's tints and font
-        
+        if let navigationController: UINavigationController = self.navigationController {
+            navigationController.navigationBar.tintColor = UIColor.white
+            navigationController.navigationBar.barTintColor = MovieTableViewController.reelGoodGreen
+            navigationController.navigationBar.titleTextAttributes = [
+                NSForegroundColorAttributeName : UIColor.white,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 24.0)
+            ]
+        }
         // 2. add a new bar button
         
     }
@@ -67,7 +78,12 @@ class MovieTableViewController: UITableViewController {
         }
         
         // update to use a custom cell subclass
-        
+        if let movieCell: MovieTableViewCell = cell as? MovieTableViewCell {
+            movieCell.movieTitleLabel.text = data[indexPath.row].title
+            movieCell.movieSummaryLabel.text = data[indexPath.row].summary
+            movieCell.moviePosterImageView.image = UIImage(named: data[indexPath.row].poster)
+            return movieCell
+        }
         cell.textLabel?.text = data[indexPath.row].title
         cell.detailTextLabel?.text = String(data[indexPath.row].year)
         

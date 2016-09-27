@@ -3,8 +3,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Movie Table View Controller-->
         <scene sceneID="cyG-Yu-0vp">
@@ -15,29 +24,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" textLabel="puJ-wx-xmQ" detailTextLabel="FgW-Za-YEO" style="IBUITableViewCellStyleSubtitle" id="NQa-gd-usH">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" rowHeight="200" id="NQa-gd-usH" customClass="MovieTableViewCell" customModule="Tableviews_Part_2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NQa-gd-usH" id="I3u-H0-aWI">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="puJ-wx-xmQ">
-                                            <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MJB-e3-cQB">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="180" id="BSb-RV-sUm"/>
+                                                <constraint firstAttribute="width" constant="120" id="PGz-n9-GKD"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWn-fk-Jx4">
+                                            <frame key="frameInset" minX="136" minY="8" width="231" height="26"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FgW-Za-YEO">
-                                            <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKp-aq-76l">
+                                            <frame key="frameInset" minX="136" minY="42" width="223" height="138"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="zWn-fk-Jx4" secondAttribute="trailing" constant="8" id="7cw-s1-pXS"/>
+                                        <constraint firstItem="MJB-e3-cQB" firstAttribute="centerY" secondItem="I3u-H0-aWI" secondAttribute="centerY" id="7kD-Bi-pCU"/>
+                                        <constraint firstItem="zWn-fk-Jx4" firstAttribute="top" secondItem="I3u-H0-aWI" secondAttribute="top" constant="8" id="BvT-sB-8U6"/>
+                                        <constraint firstItem="zWn-fk-Jx4" firstAttribute="leading" secondItem="MJB-e3-cQB" secondAttribute="trailing" constant="8" id="Jf8-vP-iBf"/>
+                                        <constraint firstItem="gKp-aq-76l" firstAttribute="leading" secondItem="MJB-e3-cQB" secondAttribute="trailing" constant="8" id="RC2-Kz-vK8"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="gKp-aq-76l" secondAttribute="bottom" constant="8" id="SfK-vp-Gw4"/>
+                                        <constraint firstAttribute="bottom" secondItem="MJB-e3-cQB" secondAttribute="bottom" constant="8" id="g1Y-Sh-6Xs"/>
+                                        <constraint firstItem="gKp-aq-76l" firstAttribute="top" secondItem="zWn-fk-Jx4" secondAttribute="bottom" constant="8" id="hMb-RC-Gyh"/>
+                                        <constraint firstItem="MJB-e3-cQB" firstAttribute="top" secondItem="I3u-H0-aWI" secondAttribute="top" constant="8" id="qZq-qn-INd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gKp-aq-76l" secondAttribute="trailing" constant="8" id="rxl-Ki-UZl"/>
+                                        <constraint firstItem="MJB-e3-cQB" firstAttribute="leading" secondItem="I3u-H0-aWI" secondAttribute="leading" constant="8" id="zQJ-8l-3UD"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="moviePosterImageView" destination="MJB-e3-cQB" id="I6E-TH-X3j"/>
+                                    <outlet property="movieSummaryLabel" destination="gKp-aq-76l" id="FCl-3w-DVQ"/>
+                                    <outlet property="movieTitleLabel" destination="zWn-fk-Jx4" id="GZs-CB-ALY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -45,7 +76,9 @@
                             <outlet property="delegate" destination="yet-gM-qc3" id="XBu-Bk-Pre"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gWo-Yo-CxC"/>
+                    <navigationItem key="navigationItem" id="gWo-Yo-CxC">
+                        <barButtonItem key="leftBarButtonItem" image="reel" id="gz7-ac-Rms"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RHw-bd-Gmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,7 +89,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KuV-Iy-6GA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1jd-vJ-snn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1jd-vJ-snn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -70,4 +103,7 @@
             <point key="canvasLocation" x="-194.40000000000001" y="64.31784107946028"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reel" width="30" height="30"/>
+    </resources>
 </document>
